@@ -1,0 +1,46 @@
+﻿# Default configuration for OCRBench
+defaults:
+  - _self_
+
+benchmark:
+  batch_size: 8
+  detection_confidence_threshold: 0.35
+  parallel_workers: 4
+
+dataset:
+  name: ufpr-alpr
+  path: null
+  subset_size: 50
+  download: true
+
+providers:
+  ocr:
+    - name: paddleocr
+      enabled: true
+    - name: easyocr
+      enabled: true
+    - name: tesseract
+      enabled: true
+    - name: trocr
+      enabled: true
+    - name: rapidocr
+      enabled: true
+
+models:
+  detectors:
+    - name: yolov8s
+      model_path: yolov8s-license-plate
+    - name: yolov11s
+      model_path: yolov11s-license-plate
+    - name: yolov12s
+      model_path: yolov12s-license-plate
+    - name: rtdetr
+      model_path: rtdetr-license-plate
+
+output:
+  results_dir: outputs
+  save_visualizations: true
+  export_format:
+    - json
+    - csv
+    - markdown

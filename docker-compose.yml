@@ -1,0 +1,40 @@
+﻿version: "3.8"
+
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ~/.cache/ocrbench:/root/.cache/ocrbench
+    environment:
+      - PYTHONPATH=/app
+    command: uvicorn apps.api.api:app --host 0.0.0.0 --port 8000
+
+  gradio:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ~/.cache/ocrbench:/root/.cache/ocrbench
+    environment:
+      - PYTHONPATH=/app
+    command: python apps/gradio/app.py
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:2.10.0
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlflow/mlruns
+    environment:
+      - BACKEND_STORE_URI=sqlite:///mlflow.db
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db
