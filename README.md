@@ -278,13 +278,3 @@ Please run `ruff`, `black`, `isort`, `mypy`, and `pytest` before submitting.
 ## License
 
 Released under the [MIT License](LICENSE).
-
----
-
-## Author
-
-**Parikshit Rathode**
-M.Sc. Candidate, *Autonomy Technologies* — Sensing & Perception / Planning & Control
-Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Germany
-
-OCRBench is a portfolio project demonstrating end-to-end perception pipeline design, model evaluation methodology, and MLOps practices for computer-vision systems.
