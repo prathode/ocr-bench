@@ -260,6 +260,20 @@ ocr-bench/
 - [ ] Additional datasets (e.g., OpenALPR, custom captured feeds)
 - [ ] Quantization / ONNX export benchmarks for edge profiles
 
+## Future Work
+
+Beyond the roadmap, the following improvements are planned to make OCRBench more robust, scalable, and production-ready:
+
+- **End-to-end pipeline optimization** — tighten the detector→cropper→OCR handoff with configurable crop margins, aspect-ratio handling, and multi-scale inference to reduce upstream error propagation.
+- **Richer metrics & statistical rigor** — add confidence-interval reporting, per-class breakdown, confusion matrices, and significance testing across runs so comparisons are statistically meaningful.
+- **Reproducibility & provenance** — pin model versions/checksums, snapshot environment and dataset hashes per run, and archive model artifacts alongside MLflow logs.
+- **Distributed & GPU benchmarking** — parallelize across multiple workers/GPUs and add throughput-under-load testing to reflect real deployment conditions.
+- **Automated model selection** — replace the static weighted profiles with a learned/adaptive selector that tunes weights from historical benchmark data and constraints.
+- **Extended data support** — ingest more ALPR and general scene-text datasets, plus custom user-uploaded feeds, with automatic annotation validation.
+- **CI/CD & quality gates** — add automated linting, type-checking, test coverage, and benchmark regression checks on every pull request.
+- **Observability** — dashboards for latency, memory, and cost trends over time, and alerting on metric regressions.
+- **Documentation & examples** — tutorials, example notebooks, and a contributor guide to lower the barrier for new models and datasets.
+
 ---
 
 ## Contributing
